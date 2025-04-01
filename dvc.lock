@@ -28,3 +28,19 @@ stages:
       hash: md5
       md5: ea19ac93e78ae6cf1f6aff1f9922939b
       size: 16203178
+  preprocess:
+    cmd: python src/preprocessing.py
+    deps:
+    - path: data/movies.csv
+      hash: md5
+      md5: d80820efdfc9605eff7c114fa0faa77c
+      size: 2745584
+    - path: src/preprocessing.py
+      hash: md5
+      md5: 4f5c36baa79f80815aad76dcfa3044fe
+      size: 938
+    outs:
+    - path: data/processed_movies.csv
+      hash: md5
+      md5: fe90f82c64dc542ad8bc87698e5268ce
+      size: 3203335
