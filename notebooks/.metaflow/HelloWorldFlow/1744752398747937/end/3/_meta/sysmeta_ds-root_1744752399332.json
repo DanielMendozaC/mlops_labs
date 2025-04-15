@@ -1,0 +1,1 @@
+{"flow_id": "HelloWorldFlow", "run_number": "1744752398747937", "step_name": "end", "task_id": "3", "field_name": "ds-root", "type": "ds-root", "value": "/Users/danielmendoza/Documents/Spring_Mod_2/MLOps/mlops_labs/notebooks/.metaflow", "tags": ["attempt_id:0"], "user_name": "danielmendoza", "ts_epoch": 1744752399332}
