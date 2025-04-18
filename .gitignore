@@ -31,4 +31,6 @@ mlruns/
 *.data
 
 # Jupyter Notebook
-.ipynb_checkpoints
+.ipynb_checkpointsnotebooks/mlflow.db
+
+mlflow.db
