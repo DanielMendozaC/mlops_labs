@@ -18,11 +18,9 @@ class TrainingFlow(FlowSpec):
         Load and prepare the data
         """
         print("Loading data...")
-        
-        # For demonstration, let's use the wine dataset
         from sklearn import datasets
         
-        # Load data - fixing the data access issue
+        # Load data
         wine = datasets.load_wine()
         X = pd.DataFrame(wine['data'], columns=wine['feature_names'])
         y = wine['target']
@@ -111,13 +109,11 @@ class TrainingFlow(FlowSpec):
         # Store all models and their performances for reference
         self.all_models = models
         
-        # We need to explicitly handle the conflicting artifacts before merging
-        # Just set these to the values from the best model
         self.model_name = self.best_model_name
         self.model = self.best_model
         self.accuracy = self.best_accuracy
         
-        # Now we can merge the remaining artifacts
+        # Merge the remaining artifacts
         self.merge_artifacts(inputs)
         
         print(f"Best model: {self.best_model_name} with accuracy: {self.best_accuracy:.4f}")
@@ -132,7 +128,7 @@ class TrainingFlow(FlowSpec):
         print("Registering model with MLFlow...")
         
         # Set up MLFlow
-        mlflow.set_tracking_uri('http://localhost:5001')  # Adjust if your MLFlow server is elsewhere
+        mlflow.set_tracking_uri('http://localhost:5001') 
         mlflow.set_experiment('metaflow-wine-classification')
         
         # Start a new run

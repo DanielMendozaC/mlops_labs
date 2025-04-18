@@ -16,8 +16,7 @@ class ScoringFlow(FlowSpec):
         """
         print("Loading data to score...")
 
-        # For demonstration, we'll get the test data from the last training run
-        # In a real scenario, you'd load new data here
+        # Load data
         train_run = Flow('TrainingFlow').latest_run
         self.X_test = train_run.data.X_test
         self.y_test = train_run.data.y_test
@@ -36,7 +35,7 @@ class ScoringFlow(FlowSpec):
         print(f"Loading model: {self.model_name}")
         
         # Set up MLFlow
-        mlflow.set_tracking_uri('http://localhost:5001')  # Adjust if your MLFlow server is elsewhere
+        mlflow.set_tracking_uri('http://localhost:5001')  
         
         # Load the model
         if self.model_version:
@@ -81,7 +80,6 @@ class ScoringFlow(FlowSpec):
             'Predicted Label': [self.target_names[i] for i in self.predictions]
         })
         
-        # Print first few results
         print("\nSample predictions:")
         print(results.head(10))
         
