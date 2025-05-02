@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: reddit-container # A name for the container running inside the pod
-        image: gcr.io/lab9-mlops/reddit-app:v1 # <<< IMPORTANT: Replace this with your actual Docker image name and tag
-        imagePullPolicy: Always  # Tells K8s not to pull from a remote registry if the image exists locally (needed for Minikube)
+        image: reddit-app:v1 # <<< IMPORTANT: Replace this with your actual Docker image name and tag
+        imagePullPolicy: IfNotPresent  # Tells K8s not to pull from a remote registry if the image exists locally (needed for Minikube)
         ports:
         - containerPort: 8000 # The port your FastAPI app listens on INSIDE the container (matches Dockerfile)

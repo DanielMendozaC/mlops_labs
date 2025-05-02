@@ -3,7 +3,7 @@ kind: Service     # Specifies the kind of object (a Service)
 metadata:
   name: reddit-service # The name of this Service object
 spec:
-  type: LoadBalancer   # Exposes the service on each Node's IP at a static port. Good for Minikube access.
+  type: NodePort   # Exposes the service on each Node's IP at a static port. Good for Minikube access.
   selector:
     app: reddit-app # Selects pods with this label (must match the Deployment's pod labels)
   ports:
