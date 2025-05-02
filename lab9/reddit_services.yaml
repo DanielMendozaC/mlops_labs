@@ -1,0 +1,15 @@
+# This file defines the Kubernetes Service
+# It provides a stable network endpoint (IP address and port) to access your application pods
+
+apiVersion: v1    # Specifies the API version
+kind: Service     # Specifies the kind of object (a Service)
+metadata:
+  name: reddit-service # The name of this Service object
+spec:
+  type: LoadBalancer   # Exposes the service on each Node's IP at a static port. Good for Minikube access.
+  selector:
+    app: reddit-app # Selects pods with this label (must match the Deployment's pod labels)
+  ports:
+  - protocol: TCP
+    port: 80       # The port the service will be available on *within* the Kubernetes cluster
+    targetPort: 8000 # The port on the *pod/container* that the service should forward traffic to (matches containerPort)

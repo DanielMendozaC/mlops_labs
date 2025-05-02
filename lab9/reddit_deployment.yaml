@@ -1,0 +1,23 @@
+# This file defines the Kubernetes Deployment
+# It tells Kubernetes how to run copies (pods) of your application container
+
+apiVersion: apps/v1 # Specifies the API version to use
+kind: Deployment    # Specifies the kind of object to create (a Deployment)
+metadata:
+  name: reddit-deployment # The name of this Deployment object
+spec:
+  replicas: 1 # Run a single instance (pod) of your application
+  selector:
+    matchLabels:
+      app: reddit-app # Finds pods with this label to manage
+  template: # This is the blueprint for the pods the Deployment will create
+    metadata:
+      labels:
+        app: reddit-app # Assigns this label to the pods created
+    spec:
+      containers:
+      - name: reddit-container # A name for the container running inside the pod
+        image: gcr.io/lab9-mlops/reddit-app:v1 # <<< IMPORTANT: Replace this with your actual Docker image name and tag
+        imagePullPolicy: Always  # Tells K8s not to pull from a remote registry if the image exists locally (needed for Minikube)
+        ports:
+        - containerPort: 8000 # The port your FastAPI app listens on INSIDE the container (matches Dockerfile)
